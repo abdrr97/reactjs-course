@@ -33,11 +33,14 @@ const UsersList = () => {
           )
         })}
       </ul>
-      <button
-        onClick={() => setUsersList([])}
-        className='mx-auto btn btn-primary my-2'
-      >
+      <button onClick={() => setUsersList([])} className='btn btn-primary m-3'>
         clear all
+      </button>
+      <button
+        onClick={() => setUsersList(users)}
+        className='btn btn-success m-3'
+      >
+        refresh
       </button>
     </div>
   )

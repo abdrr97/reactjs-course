@@ -20,14 +20,14 @@ const TaskList = ({ children }) => {
   return (
     <div>
       {children}
-      <h2 className='display-6'>Tasks List</h2>
+      <h5 className='fw-light text-uppercase'>tasks list</h5>
       <div className='list-group mb-5'>
         {tasks.map((task) => (
           <Task key={task.id} task={task} toggleCompleted={toggleCompleted} />
         ))}
       </div>
 
-      <h2 className='display-6'>Task are Done</h2>
+      <h5 className='fw-light text-uppercase'>completed tasks</h5>
       <div className='list-group'>
         {tasks
           .filter(({ completed }) => completed)

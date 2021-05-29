@@ -4,6 +4,7 @@ export const Counter = () => {
   const [number, setNumber] = useState(0)
   document.title = number
   document.body.className = number > 0 ? 'bg-dark text-white' : ''
+
   return (
     <div className='text-center'>
       <h2

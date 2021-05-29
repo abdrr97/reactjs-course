@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import UserItem from './UserItem'
 import { users } from './users'
 
 const UsersList = () => {
@@ -8,30 +9,15 @@ const UsersList = () => {
     const newUsersList = usersList.filter((user) => id !== user.id)
     setUsersList(newUsersList)
   }
+
   return (
     <div className=''>
       <h4 className='fw-light display-5 '>Users List</h4>
 
       <ul className='list-group'>
-        {usersList.map(({ id, name, username, email, avatar }) => {
-          return (
-            <li
-              key={id}
-              className='list-group-item d-flex justify-content-between align-items-center'
-            >
-              <div className='d-flex align-items-center'>
-                <img width='40' src={avatar} alt={name} />
-                <div>
-                  <h6>@{username}</h6>
-                  <small className='fw-light'>{email}</small>
-                </div>
-              </div>
-              <button onClick={() => removeUser(id)} className='btn btn-link'>
-                remove
-              </button>
-            </li>
-          )
-        })}
+        {usersList.map((user) => (
+          <UserItem key={user.id} user={user} removeUser={removeUser} />
+        ))}
       </ul>
       <button onClick={() => setUsersList([])} className='btn btn-primary m-3'>
         clear all

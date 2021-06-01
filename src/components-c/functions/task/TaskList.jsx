@@ -17,17 +17,21 @@ const TaskList = ({ children }) => {
 
     setTasks(newTasks)
   }
+
+  const completedTodosCount = tasks.filter((task) => task.completed).length
   return (
     <div>
       {children}
-      <h5 className='fw-light text-uppercase'>tasks list</h5>
+      <h5 className='fw-light text-uppercase'>
+        Todo - {completedTodosCount} / {tasks.length}
+      </h5>
       <div className='list-group mb-5'>
         {tasks.map((task) => (
           <Task key={task.id} task={task} toggleCompleted={toggleCompleted} />
         ))}
       </div>
 
-      <h5 className='fw-light text-uppercase'>completed tasks</h5>
+      <h5 className='fw-light text-uppercase'>completed Todos</h5>
       <div className='list-group'>
         {tasks
           .filter(({ completed }) => completed)

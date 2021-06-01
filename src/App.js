@@ -6,6 +6,7 @@ const App = () => {
 
   const deleteUser = (id) => {
     const newUserList = userList.filter((user) => user.id !== id)
+
     setUserList(newUserList)
   }
 
@@ -13,13 +14,19 @@ const App = () => {
     <main className='container my-5'>
       <h3 className='fw-light'>Users List</h3>
       <hr />
-      <ul className='list-group'>
+      {userList.length <= 0 ? (
+        <h1 className='text-center display-4'>No User Found</h1>
+      ) : (
+        ''
+      )}
+      <div className='list-group'>
         {userList.map((user) => {
           const { id, username, email, avatar } = user
           return (
-            <li
+            <button
+              onClick={() => deleteUser(id)}
               key={id}
-              className='d-flex justify-content-between align-items-center list-group-item'
+              className='list-group-item-action list-group-item'
             >
               <div>
                 <img width='50' src={avatar} alt={username} />
@@ -28,16 +35,10 @@ const App = () => {
                   <u>{email}</u>
                 </strong>
               </div>
-              <button
-                onClick={() => deleteUser(id)}
-                className='btn btn-sm btn-danger'
-              >
-                &times;
-              </button>
-            </li>
+            </button>
           )
         })}
-      </ul>
+      </div>
       <button onClick={() => setUserList([])} className='btn btn-danger my-3'>
         Clear All
       </button>

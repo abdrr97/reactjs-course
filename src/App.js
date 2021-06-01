@@ -1,49 +1,32 @@
 import React, { useState } from 'react'
-
-// const { useState } = React
+import { users } from './users'
 
 const App = () => {
-  // const [title, setTitle] = useState('Hello World')
-  // const [loading, setLoading] = useState(true)
-  const [user, setUser] = useState({
-    id: 1,
-    username: 'Ahmed',
-    age: 30,
-  })
-
-  const handleClick = () => {
-    if (user.username === 'Ahmed') {
-      setUser({
-        ...user,
-        username: 'Amine',
-        age: 50,
-      })
-    } else {
-      setUser({
-        ...user,
-        username: 'Ahmed',
-        age: 25,
-      })
-    }
-  }
+  const [userList, setUserList] = useState(users)
 
   return (
     <main className='container my-5'>
-      <h1 className='fw-light'>
-        <strong>id</strong> : {user.id}
-      </h1>
-      <h1 className='fw-light'>
-        <strong>username</strong> : {user.username}
-      </h1>
-      <h1 className='fw-light'>
-        <strong>age</strong> : {user.age}
-      </h1>
+      <h3 className='fw-light'>Users List</h3>
+      <hr />
+      <ul className='list-group'>
+        {userList.map((user) => {
+          const { id, username, email, avatar } = user
+          return (
+            <li key={id} className='list-group-item'>
+              <img width='50' src={avatar} alt={username} />
+              {username} <small>{email}</small>
+            </li>
+          )
+        })}
+      </ul>
+      <button onClick={() => setUserList([])} className='btn btn-danger my-3'>
+        Clear All
+      </button>
       <button
-        style={{ backgroundColor: user.username === 'Amine' ? 'green' : 'red' }}
-        className='btn btn-primary my-3 '
-        onClick={handleClick}
+        onClick={() => setUserList([])}
+        className='mx-2 btn btn-primary my-3'
       >
-        {user.username}
+        Refresh
       </button>
     </main>
   )

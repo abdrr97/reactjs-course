@@ -15,7 +15,7 @@ body {
   transition: background 0.4s;
 }
 
-.dark-button {
+#dark-mode-toggle {
   border: none;
   height: 50px;
   width: 50px;
@@ -31,6 +31,6 @@ body {
   color: white;
   background-color: #272727;
 }
-.dark-mode .dark-button {
+.dark-mode #dark-mode-toggle {
   background-color: white;
 }

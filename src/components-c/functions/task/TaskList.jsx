@@ -31,7 +31,12 @@ const TaskList = ({ children }) => {
         ))}
       </div>
 
-      <h5 className='fw-light text-uppercase'>completed Todos</h5>
+      <h5 className='fw-light text-uppercase'>
+        completed Todos - {completedTodosCount}
+      </h5>
+      <h2 className='fw-light text-center'>
+        {!completedTodosCount ? 'No Completed Todos Yet' : ''}
+      </h2>
       <div className='list-group'>
         {tasks
           .filter(({ completed }) => completed)

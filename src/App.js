@@ -1,26 +1,23 @@
 import React, { useState } from 'react'
+import UserList from './components/user/UserList'
+
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDark, setIsDark] = useState(false)
 
-  document.body.className = isDarkMode ? 'dark-mode' : ''
-
+  document.body.className = isDark ? 'bg-dark text-white ' : ''
   return (
     <main className='container my-5'>
-      <h1>Dark Mode</h1>
+      <div className='d-flex justify-content-end'>
+        <button
+          onClick={() => setIsDark(!isDark)}
+          className={isDark ? 'btn btn-light' : 'btn btn-dark'}
+        >
+          dark
+        </button>
+      </div>
+      <h1 className='display-6'>App js</h1>
 
-      <button
-        onClick={() => setIsDarkMode(!isDarkMode)}
-        id='dark-mode-toggle'
-      ></button>
-      <h3>Blog Dark Mode</h3>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui porro
-        deserunt a optio quaerat. Fugiat esse iusto unde ducimus modi obcaecati
-        nesciunt delectus velit laudantium iste minus vel voluptate, tenetur
-        facere natus illum architecto, sapiente amet accusantium maxime
-        asperiores. Excepturi.
-      </p>
+      <UserList />
     </main>
   )
 }
